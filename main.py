@@ -2,6 +2,8 @@ import psycopg2
 
 
 def create_db(conn):
+    # Здесь создать базу данных
+
     cur.execute('''
         CREATE TABLE IF NOT EXISTS client(
         id SERIAL PRIMARY KEY,
@@ -30,6 +32,7 @@ def add_phone(conn, client_id, phone):
         VALUES (%S, %S);''', (client_id, phone))
 
 
+#
 # def change_client(conn, client_id, first_name=None, last_name=None, email=None, phones=None):
 #     pass
 #
@@ -50,5 +53,5 @@ with psycopg2.connect(database="client_db", user="postgres", password="1604") as
     with conn.cursor() as cur:
         conn.autocommit = True
         create_db(conn)
-
+        sql = 'CREATE DATABASE client'
 conn.close()
